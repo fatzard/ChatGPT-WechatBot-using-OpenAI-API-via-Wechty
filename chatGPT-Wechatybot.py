@@ -1,4 +1,3 @@
-import paddlehub as hub
 import asyncio
 import openai
 
