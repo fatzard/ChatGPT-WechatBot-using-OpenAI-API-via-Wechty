@@ -8,9 +8,29 @@
 
 ChatGPT-WechatBot是基于OpenAI官方API利用对话模型实现的一种类chatGPT机器人，并通过Wechaty框架将其部署在微信端，从而实现机器人聊天。
 
+ChatGPT WechatBot is a kind of chatGPT robot based on the OpenAI official API and using the dialogue model. It is deployed on WeChat through the Wechat framework to achieve robot chat.
+
 **注**：本项目是本地Win10实现，不需要服务器部署（如果需要服务器部署，可以将docker部署到服务器即可）
 
-[TOC]
+- [ChatGPT-WechatBot using OpenAI API via Wechty](#chatgpt-wechatbot-using-openai-api-via-wechty)
+  - [项目简介](#项目简介)
+  - [1、环境配置](#1环境配置)
+    - [1.1、测试环境](#11测试环境)
+    - [1.2、Docker配置](#12docker配置)
+    - [1.3、申请Puppet的token](#13申请puppet的token)
+    - [1.4、创建docker服务](#14创建docker服务)
+    - [1.5、Python环境搭建](#15python环境搭建)
+    - [1.6、获取openAI API-key](#16获取openai-api-key)
+  - [2、ChatGPT-WechatBot](#2chatgpt-wechatbot)
+    - [2.1**快速开始**](#21快速开始)
+    - [2.2、实现对话功能](#22实现对话功能)
+      - [2.2.1、基于chat background的对话模型](#221基于chat-background的对话模型)
+      - [2.2.2、动态N-gram马尔科夫链的上下文关系的chat-backgroud对话模型](#222动态n-gram马尔科夫链的上下文关系的chat-backgroud对话模型)
+    - [3、整合项目](#3整合项目)
+    - [附：防微信被封的一些建议](#附防微信被封的一些建议)
+    - [免责声明](#免责声明)
+    - [项目合作联系方式：](#项目合作联系方式)
+
 
 
 
@@ -219,12 +239,12 @@ openAI的[GPT-3](https://beta.openai.com/docs/models/gpt-3)模型介绍如下：
 
 Our GPT-3 models can understand and generate natural language. We offer four main models with different levels of power suitable for different tasks. Davinci is the most capable model, and Ada is the fastest.
 
-| LATEST MODEL     | DESCRIPTION                                                  | MAX REQUEST  | TRAINING DATA  |
-| :--------------- | :----------------------------------------------------------- | :----------- | :------------- |
+| LATEST MODEL     | DESCRIPTION                                                                                                                                                                                                                                                     | MAX REQUEST  | TRAINING DATA  |
+| :--------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------- | :------------- |
 | text-davinci-003 | Most capable GPT-3 model. Can do any task the other models can do, often with higher quality, longer output and better instruction-following. Also supports [inserting](https://beta.openai.com/docs/guides/completion/inserting-text) completions within text. | 4,000 tokens | Up to Jun 2021 |
-| text-curie-001   | Very capable, but faster and lower cost than Davinci.        | 2,048 tokens | Up to Oct 2019 |
-| text-babbage-001 | Capable of straightforward tasks, very fast, and lower cost. | 2,048 tokens | Up to Oct 2019 |
-| text-ada-001     | Capable of very simple tasks, usually the fastest model in the GPT-3 series, and lowest cost. | 2,048 tokens | Up to Oct 2019 |
+| text-curie-001   | Very capable, but faster and lower cost than Davinci.                                                                                                                                                                                                           | 2,048 tokens | Up to Oct 2019 |
+| text-babbage-001 | Capable of straightforward tasks, very fast, and lower cost.                                                                                                                                                                                                    | 2,048 tokens | Up to Oct 2019 |
+| text-ada-001     | Capable of very simple tasks, usually the fastest model in the GPT-3 series, and lowest cost.                                                                                                                                                                   | 2,048 tokens | Up to Oct 2019 |
 
 While Davinci is generally the most capable, the other models can perform certain tasks extremely well with significant speed or [cost advantages](https://openai.com/api/pricing). For example, Curie can perform many of the same tasks as Davinci, but faster and for 1/10th the cost.
 
